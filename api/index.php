@@ -1,3 +1,3 @@
 
 <?php
-echo "PHP is running on Vercel!";
+require __DIR__ . '/../index.php';
