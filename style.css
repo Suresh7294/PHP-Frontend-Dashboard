@@ -1,0 +1,92 @@
+
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background-size:cover;
+}
+
+/* Layout */
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Left section */
+.l-inner-container{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.l-inner-container img{
+    width: 70%;
+    max-width: 400px;
+}
+
+/* Right section */
+.R-inner-container{
+    width: 40%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+.R-inner-container input,
+.opt{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Focus effect */
+.R-inner-container input:focus,
+.opt:focus{
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    outline: none;
+}
+
+/* Button */
+.btn-primary{
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    font-weight: 500;
+    transition: 0.3s;
+    transform:scale3d(15px);
+}
+
+.btn-primary:hover{
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #4f46e5,#6366f1);
+    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+    .container{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .l-inner-container{
+        display: none;
+    }
+
+    .R-inner-container{
+        width: 90%;
+    }
+}
+
+
