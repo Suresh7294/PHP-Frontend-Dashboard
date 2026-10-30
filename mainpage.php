@@ -744,10 +744,11 @@ autoWidth: false,
 
 </html>
 <?php
-    }
+   /* }
     else{
+     */
 ?>
-<script>alert('No Sessions Found');location.href='index.php';</script>
+<!-- <script>alert('No Sessions Found');location.href='index.php';</script>-->
    <?php 
    // } 
     ?>
