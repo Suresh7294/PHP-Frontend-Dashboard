@@ -18,12 +18,12 @@
       "dest": "/api/mainpage.php"
     },
     {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
-    },
-    {
       "src": "/L-accounts.php",
       "dest": "/api/L-accounts.php"
-      }
+      },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
   ]
 }
