@@ -1,7 +1,6 @@
 <?php
 
 $page = $_GET['page'] ?? '';
-
 $page = basename($page);
 
 $rootFile = dirname(__DIR__) . '/' . $page;
