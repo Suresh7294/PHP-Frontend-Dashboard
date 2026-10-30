@@ -7,7 +7,6 @@ if ($con) {
     die("Error:" . mysqli_connect_error());
 } */
 
-
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
@@ -17,24 +16,18 @@ $caCert = getenv('DB_CA_CERT');
 
 $con = mysqli_init();
 
-mysqli_options($con, MYSQLI_OPT_CONNECT_TIMEOUT, 10);
+mysqli_options($con, MYSQLI_OPT_CONNECT_TIMEOUT, 15);
 
-mysqli_options($con, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
-
-mysqli_ssl_set($con, NULL, NULL, NULL, NULL, NULL);
-
-if (
-    !mysqli_real_connect(
-        $con,
-        $host,
-        $user,
-        $password,
-        $database,
-        $port,
-        NULL,
-        MYSQLI_CLIENT_SSL
-    )
-) {
+if (!mysqli_real_connect(
+    $con,
+    $host,
+    $user,
+    $password,
+    $database,
+    $port,
+    NULL,
+    MYSQLI_CLIENT_SSL
+)) {
     error_log("Database connection failed: " . mysqli_connect_error());
     die("Database connection failed.");
 }
