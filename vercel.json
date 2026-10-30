@@ -10,8 +10,8 @@
       "dest": "/assets/$1"
     },
     {
-      "src": "/(.*\\.php)",
-      "dest": "/api/$1"
+      "src": "/checklogin.php",
+      "dest": "/api/checklogin.php"
     },
     {
       "src": "/(.*)",
