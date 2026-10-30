@@ -1,21 +1,17 @@
 <?php
 
-echo '<pre>';
-echo "REQUEST_URI: ";
-var_dump($_SERVER['REQUEST_URI'] ?? null);
+$page = $_GET['page'] ?? '';
 
-echo "\nSCRIPT_NAME: ";
-var_dump($_SERVER['SCRIPT_NAME'] ?? null);
+$page = basename($page);
 
-echo "\nQUERY_STRING: ";
-var_dump($_SERVER['QUERY_STRING'] ?? null);
+$rootFile = dirname(__DIR__) . '/' . $page;
 
-echo "\nALL SERVER VARIABLES:\n";
-
-foreach ($_SERVER as $key => $value) {
-    if (stripos($key, 'path') !== false || stripos($key, 'url') !== false) {
-        echo $key . ' = ';
-        var_dump($value);
-    }
+if (
+    !preg_match('/^[a-zA-Z0-9_-]+\.php$/', $page) ||
+    !is_file($rootFile)
+) {
+    http_response_code(404);
+    exit('Page not found: ' . htmlspecialchars($page));
 }
-echo '</pre>';
+
+require $rootFile;
