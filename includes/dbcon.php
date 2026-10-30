@@ -7,12 +7,31 @@ if ($con) {
     die("Error:" . mysqli_connect_error());
 } */
 
-$host = getenv('DB_HOST');
+
+
+mysqli_report(MYSQLI_REPORT_OFF);
+
+$host = trim(getenv('DB_HOST') ?: '');
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 $database = getenv('DB_NAME');
 $port = (int) getenv('DB_PORT');
 $caCert = getenv('DB_CA_CERT');
+
+if ($host === '' || !$user || !$password || !$database || !$port) {
+    error_log("Missing database environment variables.");
+    http_response_code(500);
+    exit("Database configuration missing.");
+}
+
+// Check DNS resolution
+$ip = gethostbyname($host);
+
+if ($ip === $host) {
+    error_log("Database DNS resolution failed for: " . $host);
+    http_response_code(500);
+    exit("Database hostname could not be resolved.");
+}
 
 $con = mysqli_init();
 
@@ -25,10 +44,11 @@ if (!mysqli_real_connect(
     $password,
     $database,
     $port,
-    NULL,
+    null,
     MYSQLI_CLIENT_SSL
 )) {
     error_log("Database connection failed: " . mysqli_connect_error());
-    die("Database connection failed.");
+    http_response_code(500);
+    exit("Database connection failed.");
 }
 ?>
