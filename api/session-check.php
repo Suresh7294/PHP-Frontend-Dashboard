@@ -1,8 +1,8 @@
 <?php
-session_start();
-
-$_SESSION['test_value'] = 'Session working';
-
-echo "Session ID: " . session_id() . "<br>";
-echo "Session value: " . $_SESSION['test_value'] . "<br>";
-echo "PHP auto prepend: " . ini_get('auto_prepend_file');
+echo "Current directory: " . getcwd() . "<br>";
+echo "Script directory: " . __DIR__ . "<br>";
+echo "Project root bootstrap exists: " .
+     (file_exists(__DIR__ . '/../session_bootstrap.php') ? 'YES' : 'NO') . "<br>";
+echo "API bootstrap exists: " .
+     (file_exists(__DIR__ . '/session_bootstrap.php') ? 'YES' : 'NO') . "<br>";
+echo "PHP version: " . PHP_VERSION;
