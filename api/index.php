@@ -1,21 +1,21 @@
 <?php
 
-$requestUri = $_SERVER['HTTP_X_INVOKE_PATH']
-    ?? $_SERVER['REQUEST_URI']
-    ?? '';
+echo '<pre>';
+echo "REQUEST_URI: ";
+var_dump($_SERVER['REQUEST_URI'] ?? null);
 
-$requestPath = parse_url($requestUri, PHP_URL_PATH);
+echo "\nSCRIPT_NAME: ";
+var_dump($_SERVER['SCRIPT_NAME'] ?? null);
 
-$page = basename($requestPath);
+echo "\nQUERY_STRING: ";
+var_dump($_SERVER['QUERY_STRING'] ?? null);
 
-$rootFile = dirname(__DIR__) . '/' . $page;
+echo "\nALL SERVER VARIABLES:\n";
 
-if (
-    !preg_match('/^[a-zA-Z0-9_-]+\.php$/', $page) ||
-    !is_file($rootFile)
-) {
-    http_response_code(404);
-    exit('Page not found: ' . htmlspecialchars($page));
+foreach ($_SERVER as $key => $value) {
+    if (stripos($key, 'path') !== false || stripos($key, 'url') !== false) {
+        echo $key . ' = ';
+        var_dump($value);
+    }
 }
-
-require $rootFile;
+echo '</pre>';
