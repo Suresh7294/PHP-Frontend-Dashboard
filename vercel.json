@@ -14,8 +14,12 @@
       "dest": "/api/checklogin.php"
     },
     {
-  "src": "/(.*\\.php)",
-  "dest": "/api/$1"
-}
+      "src": "/mainpage.php",
+      "dest": "/api/mainpage.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
   ]
 }
