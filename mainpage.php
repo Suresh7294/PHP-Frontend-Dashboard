@@ -1,12 +1,12 @@
 <?php
-/*session_start();
+session_start();
 $userid=$_SESSION['sessid'];
  $userrole=$_SESSION['sessrole'];
  $username=$_SESSION['sessname'];
  $useremail=$_SESSION['sessemail'];
  if($username!=null && $useremail!=null)
     {
-    */
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -744,11 +744,11 @@ autoWidth: false,
 
 </html>
 <?php
-   /* }
+    }
     else{
-     */
+     
 ?>
-<!-- <script>alert('No Sessions Found');location.href='index.php';</script>-->
+<script>alert('No Sessions Found');location.href='index.php';</script>
    <?php 
-   // } 
+    } 
     ?>
