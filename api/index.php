@@ -1,21 +1,21 @@
-
 <?php
-//require __DIR__ . '/../index.php';
 
-// Get the requested URL
-$requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$requestUri = $_SERVER['HTTP_X_INVOKE_PATH']
+    ?? $_SERVER['REQUEST_URI']
+    ?? '';
 
-// Extract the PHP filename
+$requestPath = parse_url($requestUri, PHP_URL_PATH);
+
 $page = basename($requestPath);
 
-// Allow only PHP files from the project root
+$rootFile = dirname(__DIR__) . '/' . $page;
+
 if (
     !preg_match('/^[a-zA-Z0-9_-]+\.php$/', $page) ||
-    !is_file(__DIR__ . '/../' . $page)
+    !is_file($rootFile)
 ) {
     http_response_code(404);
-    exit('Page not found');
+    exit('Page not found: ' . htmlspecialchars($page));
 }
 
-// Execute the requested PHP page
-require __DIR__ . '/../' . $page;
+require $rootFile;
