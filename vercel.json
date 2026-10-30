@@ -1,4 +1,3 @@
-
 {
   "functions": {
     "api/*.php": {
@@ -9,6 +8,10 @@
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*\\.php)",
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
