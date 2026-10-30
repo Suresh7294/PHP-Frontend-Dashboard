@@ -20,6 +20,26 @@
     {
       "src": "/(.*)",
       "dest": "/api/index.php"
+    },
+    {
+      "src": "/L-accounts.php",
+      "dest": "/api/L-accounts.php"
+      },
+    {
+      "src": "/mainpage.php",
+      "dest": "/api/mainpage.php"
+      },
+    {
+      "src": "/mainpage.php",
+      "dest": "/api/mainpage.php"
+      },
+    {
+      "src": "/mainpage.php",
+      "dest": "/api/mainpage.php"
+      },
+    {
+      "src": "/mainpage.php",
+      "dest": "/api/mainpage.php"
     }
   ]
 }
